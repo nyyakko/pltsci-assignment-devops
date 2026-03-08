@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pltsci-assignment
+spec:
+  containers:
+    - name: pltsci-assignment
+      image: nyyakko/pltsci-assignment:latest
+      ports:
+        - containerPort: 8080
