@@ -9,12 +9,12 @@ spec:
     - name: network-check
       image: nyyakko/pltsci-assignment-init-ping:latest
   containers:
-    - name: pltsci-assignment
+    - name: app
       image: nyyakko/pltsci-assignment:latest
       ports:
         - name: http
           containerPort: 8080
-    - name: pltsci-assignment-ssl
+    - name: envoy
       image: nyyakko/pltsci-assignment-ssl-proxy:latest
       ports:
         - name: https
