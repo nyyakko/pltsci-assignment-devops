@@ -3,6 +3,11 @@ kind: Pod
 metadata:
   name: pltsci-assignment-ssl
 spec:
+  initContainers:
+    - name: echo
+      image: nyyakko/pltsci-assignment-init-echo:latest
+    - name: network-check
+      image: nyyakko/pltsci-assignment-init-ping:latest
   containers:
     - name: pltsci-assignment
       image: nyyakko/pltsci-assignment:latest
