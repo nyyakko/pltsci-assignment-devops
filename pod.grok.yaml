@@ -3,28 +3,34 @@ kind: Pod
 metadata:
   name: grok
 spec:
+  volumes:
+    - name: grok-db
+      emptyDir: {}
   containers:
     - name: nginx
       image: nginx:alpine
       ports:
         - containerPort: 80
-      lifecycle:
-        postStart:
-          exec:
-            command:
-              - sh
-              - -c
-              - |
-                STATE=$(((RANDOM % $((2 - 0))) + 0))
+      volumeMounts:
+        - mountPath: /usr/share/nginx/html/grok
+          name: grok-db
+    - name: answer-generator
+      image: busybox
+      volumeMounts:
+        - mountPath: /grok
+          name: grok-db
+      command:
+        - sh
+        - -c
+        - |
+          while :
+          do
+              STATE=$(((RANDOM % $((2 - 0))) + 0))
 
-                if [[ $STATE -eq "1" ]]; then
-                    echo "yes" > /usr/share/nginx/html/grok
-                elif [[ $STATE -eq "0" ]]; then
-                    echo "no" > /usr/share/nginx/html/grok
-                fi
-        preStop:
-          exec:
-            command:
-                - sh
-                - -c
-                - echo "he couldn't handle the truth!"
+              if [[ $STATE -eq "1" ]]; then
+                  echo "yes" > /grok/answer
+              elif [[ $STATE -eq "0" ]]; then
+                  echo "no" > /grok/answer
+              fi
+              sleep 1
+          done
