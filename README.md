@@ -1,8 +1,11 @@
 # Devops Learning Task
 
 This repository is meant for me to keep track of my progress in learning DevOps
-from the ground up. Do not expect this repository to make much sense
-structurally, because it is meant to evolve just as organically as my knowledge :^).
+from the ground up.
+
+> [!WARNING]
+> Since this repo is meant to evolve organically just like my own knowledge, do
+> some things in here might not make any sense structurally.
 
 ## Learning progress
 
@@ -29,4 +32,4 @@ Everything I currently know about kubernetes.
     - [x] How to share files between containers of the same pod
     - [x] How to share files between pods
     - [x] What are external volumes and its caveats
-    - [x] What is a `hostPath` volume type and why it might never be a good idea
+    - [x] What is a `hostPath` volume type and why it is so dangerous
