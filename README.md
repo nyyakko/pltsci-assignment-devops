@@ -31,10 +31,17 @@ Everything I currently know about kubernetes.
 - [x] Volumes
     - [x] How to persist files across container restarts
     - [x] How to share files between containers of the same pod
-    - [x] How to share files between pods
     - [x] What are external volumes and its caveats
     - [x] Security implications of a `hostPath` volume
-- [x] Persistent Volumes
-    - [x] Persistent Volumes Claim
-    - [x] Sharing volumes between pods
+- [x] Volumes Provisioning
     - [x] Access modes
+    - [x] Static Provisioning
+        - [x] Persistent Volume Claim
+            - [x] How to persist files across pod restarts
+            - [x] How to share files between pods
+            - [x] Sharing volumes between pods
+        - [x] Lifetime of a statically provisioned persistent volume
+    - [x] Dynamic Provisioning
+        - [x] Storage Classes
+        - [x] Dynamic Volume Expansion
+        - [x] Lifetime of a dynamically provisioned persistent volume
