@@ -20,7 +20,7 @@ spec:
               \"id\": 1,
               \"text\": \"Hello, how are you?\",
               \"answers\": [
-                  \"Fine sankyou\", \"I'm great!\"
+                  \"Fine sankyou\", \"I'm fine\", \"I'm great!\"
               ],
               \"correctAnswerIndex\": 0
           }])
