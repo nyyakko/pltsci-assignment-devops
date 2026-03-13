@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: quiz
+spec:
+  volumes:
+    - name: quiz-data
+      persistentVolumeClaim:
+        claimName: generic-data-default
+    - name: initdb
+      emptyDir: {}
+  initContainers:
+    - name: db-initializer
+      image: busybox
+      command:
+        - sh
+        - -c
+        - |
+          echo "
+          db.getSiblingDB(\"kiada\").questions.insertMany([{
+              \"id\": 1,
+              \"text\": \"Hello, how are you?\",
+              \"answers\": [
+                  \"Fine sankyou\", \"I'm great!\"
+              ],
+              \"correctAnswerIndex\": 0
+          }])
+          " >> /initdb.d/insert-questions.js
+      volumeMounts:
+        - name: initdb
+          mountPath: /initdb.d
+  containers:
+    - name: quiz
+      image: luksa/quiz-api:0.1
+      ports:
+        - containerPort: 8080
+    - name: mongo
+      image: mongo
+      volumeMounts:
+        - name: initdb
+          mountPath: /docker-entrypoint-initdb.d/
+          readOnly: true
+        - name: quiz-data
+          mountPath: /data/db
