@@ -21,6 +21,7 @@ Everything I currently know about kubernetes.
     - PersistentVolume (PV)
     - StorageClass (SC)
     - ConfigMap (CM)
+    - Secret
 - Pods
     - Workloads
         - Running an application by creating a pod from a YAML manifest
