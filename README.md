@@ -49,3 +49,4 @@ Everything I currently know about kubernetes.
 - Configuring Pods
     - Environment variables
     - ConfigMap
+        - ConfigMap Volumes
