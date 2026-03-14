@@ -13,36 +13,39 @@ from the ground up.
 
 Everything I currently know about kubernetes.
 
-- [x] Understanding what is and how kubernetes works
-- [x] Simple application deployment (without YAML manifest)
-- [x] Kubernetes API Objects
-- [x] Pods
-    - [x] Workloads
-        - [x] Running an application by creating a pod from a YAML manifest
-        - [x] Interacting with the application, viewing its logs, and exploring its environment
-        - [x] Understanding what is a sidecar container
-        - [x] Understanding what are init containers
-    - [x] Lifetime
-        - [x] Inspecting the pod status
-        - [x] Probes
-            - [x] Liveness probe
-            - [x] Startup probe
-        - [x] Understanding about a pod's condition, phase and status
-- [x] Volumes
-    - [x] How to persist files across container restarts
-    - [x] How to share files between containers of the same pod
-    - [x] What are external volumes and its caveats
-    - [x] Security implications of a `hostPath` volume
-- [x] Volumes Provisioning
-    - [x] Access modes
-    - [x] Static Provisioning
-        - [x] Persistent Volume Claim
-            - [x] How to persist files across pod restarts
-            - [x] How to share files between pods
-            - [x] Sharing volumes between pods
-        - [x] Lifetime of a statically provisioned persistent volume
-        - [x] Local persistent volumes
-    - [x] Dynamic Provisioning
-        - [x] Storage Classes
-        - [x] Dynamic Volume Expansion
-        - [x] Lifetime of a dynamically provisioned persistent volume
+-  Understanding what is and how kubernetes works
+-  Simple application deployment (without YAML manifest)
+-  Kubernetes API Objects
+-  Pods
+    -  Workloads
+        -  Running an application by creating a pod from a YAML manifest
+        -  Interacting with the application, viewing its logs, and exploring its environment
+        -  Understanding what is a sidecar container
+        -  Understanding what are init containers
+    -  Lifetime
+        -  Inspecting the pod status
+        -  Probes
+            -  Liveness probe
+            -  Startup probe
+        -  Understanding about a pod's condition, phase and status
+-  Volumes
+    -  How to persist files across container restarts
+    -  How to share files between containers of the same pod
+    -  What are external volumes and its caveats
+    -  Security implications of a `hostPath` volume
+-  Volumes Provisioning
+    -  Access modes
+    -  Static Provisioning
+        -  Persistent Volume Claim
+            -  How to persist files across pod restarts
+            -  How to share files between pods
+            -  Sharing volumes between pods
+        -  Lifetime of a statically provisioned persistent volume
+        -  Local persistent volumes
+    -  Dynamic Provisioning
+        -  Storage Classes
+        -  Dynamic Volume Expansion
+        -  Lifetime of a dynamically provisioned persistent volume
+-  Environment Variables
+    -  Defined inside the Pod manifest
+    -  Defined inside the ConfigMap manifest
