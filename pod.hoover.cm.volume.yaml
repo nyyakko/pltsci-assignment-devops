@@ -11,12 +11,12 @@ spec:
           - key: envoy.yaml
             path: envoy.yaml
     - name: envoy-certs
-      configMap:
-        name: hoover-envoy-config
+      secret:
+        secretName: hoover-envoy-secrets
         items:
-          - key: example-com.crt
+          - key: tls.crt
             path: example-com.crt
-          - key: example-com.key
+          - key: tls.key
             path: example-com.key
   initContainers:
     - name: network-check

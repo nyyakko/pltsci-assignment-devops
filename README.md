@@ -50,3 +50,5 @@ Everything I currently know about kubernetes.
     - Environment variables
     - ConfigMap
         - ConfigMap Volumes
+        - Ceveats when updating ConfigMap files
+    - Secrets
