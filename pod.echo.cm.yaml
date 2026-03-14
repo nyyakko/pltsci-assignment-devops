@@ -16,7 +16,15 @@ spec:
               name: config
               key: world
               optional: false
+        - name: NODE_NAME
+          valueFrom:
+              fieldRef:
+                fieldPath: spec.nodeName
+        - name: POD_NAME
+          valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
       command:
         - sh
         - -c
-        - echo "$HELLO, $WORLD"
+        - echo "$HELLO, $WORLD from $POD_NAME@$NODE_NAME"
