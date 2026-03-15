@@ -20,12 +20,14 @@ Everything I currently know about kubernetes.
 - Understanding what is and how kubernetes works
 - Simple application deployment (without YAML manifest)
 - Kubernetes API Objects
+    - Node
     - Pod
     - PersistentVolumeClaim (PVC)
     - PersistentVolume (PV)
     - StorageClass (SC)
     - ConfigMap (CM)
     - Secret
+    - Namespaces (NS)
 - Pods
     - Workloads
         - Running an application by creating a pod from a YAML manifest
@@ -67,7 +69,7 @@ Everything I currently know about kubernetes.
     - Secrets
     - Downward API
     - Projected Volume
-* Organizing pods
+* Organizing Objects
     - Namespaces
         - Setting a default namespace to work with `kubectl`
     - Labels
