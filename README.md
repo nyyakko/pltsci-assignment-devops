@@ -66,6 +66,7 @@ Everything I currently know about kubernetes.
         - Ceveats when updating ConfigMap files
     - Secrets
     - Downward API
+    - Projected Volume
 
 ### Observability
 

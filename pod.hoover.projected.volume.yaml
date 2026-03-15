@@ -1,0 +1,102 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hoover-cm-volume
+spec:
+  volumes:
+    - name: envoy-config
+      projected:
+        sources:
+          - configMap:
+              name: hoover-envoy-projected-config
+              items:
+                - key: envoy.yaml
+                  path: envoy.yaml
+          - secret:
+              name: hoover-envoy-secrets
+              items:
+                - key: tls.crt
+                  path: example-com.crt
+                - key: tls.key
+                  path: example-com.key
+    - name: pod-meta
+      downwardAPI:
+        items:
+          - path: pod-name.txt
+            fieldRef:
+              fieldPath: metadata.name
+
+  initContainers:
+    - name: network-check
+      image: busybox
+      volumeMounts:
+        - name: pod-meta
+          mountPath: /pod-meta
+      command:
+        - sh
+        - -c
+        - |
+          IP=1.1.1.1
+
+          POD_NAME=$(cat /pod-meta/pod-name.txt)
+
+          echo "[$POD_NAME]: Checking network connectivity to $IP"
+
+          if ping -c 1 $IP &> /dev/null; then
+            echo "[$POD_NAME]: Host seems to be reachable. Good."
+          else
+            echo "[$POD_NAME]: Host could not be reached. Bad."
+          fi
+
+  containers:
+    - name: app
+      image: nyyakko/pltsci-assignment:latest
+      ports:
+        - name: http
+          containerPort: 8080
+      volumeMounts:
+        - name: pod-meta
+          mountPath: /pod-meta
+      lifecycle:
+        postStart:
+          exec:
+            command:
+              - sh
+              - -c
+              - |
+                POD_NAME=$(cat /pod-meta/pod-name.txt)
+
+                echo "[$POD_NAME]: Hai hai 👋" > /proc/1/fd/1
+      startupProbe:
+        httpGet:
+          path: /v1/health
+          port: http
+        periodSeconds: 5
+        failureThreshold: 2
+      livenessProbe:
+        httpGet:
+          path: /v1/health
+          port: http
+        initialDelaySeconds: 10
+        periodSeconds: 5
+        timeoutSeconds: 2
+        failureThreshold: 3
+
+    - name: envoy
+      image: envoyproxy/envoy:v1.31-latest
+      ports:
+        - name: https
+          containerPort: 8443
+        - name: admin
+          containerPort: 9901
+      volumeMounts:
+        - name: envoy-config
+          mountPath: /etc/envoy
+      livenessProbe:
+        httpGet:
+          path: /ready
+          port: admin
+        initialDelaySeconds: 10
+        periodSeconds: 5
+        timeoutSeconds: 2
+        failureThreshold: 3
