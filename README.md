@@ -67,6 +67,14 @@ Everything I currently know about kubernetes.
     - Secrets
     - Downward API
     - Projected Volume
+* Organizing pods
+    - Namespaces
+        - Setting a default namespace to work with `kubectl`
+    - Labels
+        - Label selectors
+            - Equality based
+            - Set based
+    - Field selectors
 
 ### Observability
 
