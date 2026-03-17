@@ -1,6 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
+  namespace: gok
   generateName: grok-
   labels:
     app: grok
