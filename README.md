@@ -28,6 +28,9 @@ Everything I currently know about kubernetes.
     - ConfigMap (CM)
     - Secret
     - Namespaces (NS)
+    - Service (SVC)
+    - Endpoints
+    - EndpointSlice
 - Pods
     - Workloads
         - Running an application by creating a pod from a YAML manifest
@@ -89,6 +92,7 @@ Everything I currently know about kubernetes.
     - The externalTrafficPolicy field
             - Makes it so an actual LoadBalancer is provisioned in the cluster
     - External services
+    - Endpoints
     - Headless services
 
 ### Observability
