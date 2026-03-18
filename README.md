@@ -94,7 +94,8 @@ Everything I currently know about kubernetes.
     - External services
     - Endpoints
     - Headless services
-    - The internalTraffictPolicy field
+    - The internalTrafficPolicy field
+    - Topology-aware routing
 
 ### Observability
 
