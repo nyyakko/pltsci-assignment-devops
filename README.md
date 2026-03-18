@@ -90,12 +90,11 @@ Everything I currently know about kubernetes.
         - NodePort
         - LoadBalancer
             - Makes it so an actual LoadBalancer is provisioned in the cluster (if supported)
-    - The externalTrafficPolicy
-        - Local
-        - Cluster
+    - The externalTrafficPolicy field
     - External services
     - Endpoints
     - Headless services
+    - The internalTraffictPolicy field
 
 ### Observability
 
