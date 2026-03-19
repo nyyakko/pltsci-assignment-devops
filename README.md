@@ -20,17 +20,6 @@ Everything I currently know about kubernetes.
 - Understanding what is and how kubernetes works
 - Simple application deployment (without YAML manifest)
 - Kubernetes API Objects
-    - Node
-    - Pod
-    - PersistentVolumeClaim (PVC)
-    - PersistentVolume (PV)
-    - StorageClass (SC)
-    - ConfigMap (CM)
-    - Secret
-    - Namespaces (NS)
-    - Service (SVC)
-    - Endpoints
-    - EndpointSlice
 - Pods
     - Workloads
         - Running an application by creating a pod from a YAML manifest
@@ -97,6 +86,21 @@ Everything I currently know about kubernetes.
     - The internalTrafficPolicy field
     - Topology-aware routing
     - Readiness probes
+- Ingress
+    - Ingress Object
+    - Ingress Controller
+    - Reverse Proxy (L7 Load Balancer)
+        - How the proxy forwards traffic to the services it backs
+    - Resolving a service by its host name
+        - Through cURL
+        - Through the browser
+    - Path matching (Exact vs Prefix)
+    - Host field wildcard
+    - Default backend
+    - TLS
+        - By forwading to the pod's sidecar container
+            - Non-standard, uses annotations and depends on the ingress controller being used
+        - By handling it direclty in the ingress
 
 ### Observability
 

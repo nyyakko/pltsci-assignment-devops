@@ -29,6 +29,15 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.name
+      readinessProbe:
+        successThreshold: 3
+        periodSeconds: 2
+        failureThreshold: 1
+        timeoutSeconds: 1
+        exec:
+          command:
+            - ls
+            - /var/ready
       command:
         - sh
         - -c
@@ -46,12 +55,10 @@ spec:
                   echo "no" >> /grok/answer
               fi
 
-              echo "<br><br>work done from: $POD_NAME" >> /grok/answer
+              echo "work done from: $POD_NAME" >> /grok/answer
 
               echo "</body>" >> /grok/answer
               echo "</html>" >> /grok/answer
-
-              mv /grok/answer /grok/answer.html
 
               sleep 1
           done

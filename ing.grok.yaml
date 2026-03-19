@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: grok-service-com
+  namespace: gok
+spec:
+  rules:
+    - host: grok.service.com
+      http:
+        paths:
+          - path: /
+            backend:
+              service:
+                name: grok-service
+                port:
+                  name: http
+            pathType: Prefix
