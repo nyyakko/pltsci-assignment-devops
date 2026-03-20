@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: grok
+  namespace: gok
+  labels:
+    app: grok
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: grok
+  template:
+    metadata:
+      namespace: gok
+      labels:
+        app: grok
+    spec:
+      volumes:
+        - name: grok-db
+          emptyDir: {}
+      containers:
+        - name: nginx
+          image: nginx:alpine
+          ports:
+            - name: http
+              containerPort: 80
+          volumeMounts:
+            - mountPath: /usr/share/nginx/html/grok
+              name: grok-db
+              readOnly: true
+        - name: answer-generator
+          image: busybox
+          volumeMounts:
+            - mountPath: /grok
+              name: grok-db
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+          command:
+            - sh
+            - -c
+            - |
+              while :
+              do
+                  STATE=$(((RANDOM % $((2 - 0))) + 0))
+
+                  echo "<html>" > /grok/answer
+                  echo "<body>" >> /grok/answer
+
+                  if [[ $STATE -eq "1" ]]; then
+                      echo "yes" >> /grok/answer
+                  elif [[ $STATE -eq "0" ]]; then
+                      echo "no" >> /grok/answer
+                  fi
+
+                  echo "<br><br>work done from: $POD_NAME" >> /grok/answer
+
+                  echo "</body>" >> /grok/answer
+                  echo "</html>" >> /grok/answer
+
+                  mv /grok/answer /grok/answer.html
+
+                  sleep 1
+              done

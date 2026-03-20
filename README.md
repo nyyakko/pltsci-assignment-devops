@@ -108,6 +108,10 @@ Everything I currently know about kubernetes.
         - Specify the ingress controller responsible for creating an ingress through ingressClasName
         - Give additional parameters to the ingress controller
     - Custom resources may be used as backends
+- ReplicaSets
+    - Why use a ReplicaSet?
+    - The caveats of using ReplicaSets directly
+    - Scaling ReplicaSets
 
 ### Observability
 
