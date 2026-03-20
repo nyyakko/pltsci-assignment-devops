@@ -100,7 +100,14 @@ Everything I currently know about kubernetes.
     - TLS
         - By forwading to the pod's sidecar container
             - Non-standard, uses annotations and depends on the ingress controller being used
-        - By handling it direclty in the ingress
+        - By handling it directly in the ingress
+    - Additional configuration may be done either by
+        - Using annotations
+        - Using custom api objects
+    - IngressClass can be used to
+        - Specify the ingress controller responsible for creating an ingress through ingressClasName
+        - Give additional parameters to the ingress controller
+    - Custom resources may be used as backends
 
 ### Observability
 
