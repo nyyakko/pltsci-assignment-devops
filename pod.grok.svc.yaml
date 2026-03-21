@@ -41,9 +41,9 @@ spec:
               echo "<body>" >> /grok/answer
 
               if [[ $STATE -eq "1" ]]; then
-                  echo "yes" >> /grok/answer
+                  echo "yes." >> /grok/answer
               elif [[ $STATE -eq "0" ]]; then
-                  echo "no" >> /grok/answer
+                  echo "no." >> /grok/answer
               fi
 
               echo "<br><br>work done from: $POD_NAME" >> /grok/answer
