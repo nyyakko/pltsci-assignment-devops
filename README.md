@@ -115,9 +115,10 @@ Everything I currently know about kubernetes.
     - The reconciliation loop
         - Pods whose containers continously crash or fail their probes are
           never deleted automatically
-    - Debugging a pod controller by a ReplicaSets
+    - How a ReplicaSet handles node failures
+    - Debugging a pod controlled by a ReplicaSet
 - Deployments
-    - Why use a Deploment?
+    - Why use a Deployment?
     - Updating a deployment
         - Deployment strategies
             - Recreate
@@ -128,6 +129,19 @@ Everything I currently know about kubernetes.
             - Shadowing
         - Pausing the update
     - Availability
+- StatefulSets
+    - Why use a StatefulSet?
+        - The Pets vs Cattle analogy
+    - How a StatefulSet handles node failures
+    - The persistentVolumeClaimRetentionPolicy
+    - The podManagementPolicy
+        - OrderedReady
+            - Caveats when using the OrderedReady policy
+        - Parallel
+    - Updating a StatefulSet
+        - StatefulSet strategies
+            - RollingUpdate
+            - OnDelete
 
 ### Observability
 
